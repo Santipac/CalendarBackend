@@ -1,9 +1,9 @@
-import * as dotenv from 'dotenv';
 import express from 'express';
 import dbConnection from './databases/config';
 import cors from 'cors';
 import auth from './routes/auth.routes';
 import events from './routes/events.routes';
+import dotenv from 'dotenv';
 dotenv.config();
 
 //Crea el servidor

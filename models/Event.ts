@@ -5,7 +5,7 @@ interface IEvent {
   notes: string;
   start: Date;
   end: Date;
-  user: Schema.Types.ObjectId;
+  user: Schema.Types.ObjectId | string;
 }
 
 const eventSchema = new Schema<IEvent>({
@@ -13,7 +13,7 @@ const eventSchema = new Schema<IEvent>({
   notes: { type: String },
   start: { type: Date, required: true },
   end: { type: Date, required: true },
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
 const Event = model<IEvent>('Event', eventSchema);
