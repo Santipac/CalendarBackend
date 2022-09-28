@@ -6,6 +6,8 @@ import events from './routes/events.routes';
 import dotenv from 'dotenv';
 dotenv.config();
 
+const PORT = process.env.PORT || 3001;
+
 //Crea el servidor
 const server = express();
 
@@ -23,6 +25,6 @@ server.use(express.json());
 server.use('/api/auth', auth);
 server.use('/api/events', events);
 //Escuchar Peticiones
-server.listen(process.env.TSC_PORT, () => {
-  console.log(`Servidor corriendo en puerto ${process.env.TSC_PORT}`);
+server.listen(PORT, () => {
+  console.log(`Servidor corriendo en puerto ${PORT}`);
 });

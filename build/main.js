@@ -10,6 +10,7 @@ const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const events_routes_1 = __importDefault(require("./routes/events.routes"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
+const PORT = process.env.PORT || 3001;
 //Crea el servidor
 const server = (0, express_1.default)();
 //Database
@@ -23,6 +24,6 @@ server.use(express_1.default.json());
 server.use('/api/auth', auth_routes_1.default);
 server.use('/api/events', events_routes_1.default);
 //Escuchar Peticiones
-server.listen(process.env.TSC_PORT, () => {
-    console.log(`Servidor corriendo en puerto ${process.env.TSC_PORT}`);
+server.listen(PORT, () => {
+    console.log(`Servidor corriendo en puerto ${PORT}`);
 });
