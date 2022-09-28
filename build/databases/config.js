@@ -13,9 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
+const MONGODB_URL = process.env.MONGODB_URL;
 const dbConnection = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect(process.env.TSC_DB_CNN);
+        yield mongoose_1.default.connect(MONGODB_URL ||
+            'mongodb+srv://MERN_USER:HSayPC5Afal3p1jU@calendardb.uwhy6oc.mongodb.net/mern_calendar');
         console.log('🚀 DataBase is running!');
     }
     catch (error) {
