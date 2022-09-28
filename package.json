@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd main.ts --watch",
+    "dev": "tsnd src/main.ts --watch",
     "start": "node build/main.js",
     "build": "tsc"
   },
