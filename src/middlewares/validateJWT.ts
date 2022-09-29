@@ -24,7 +24,7 @@ export const validateJWT = (
   try {
     const { name, uid } = jwt.verify(
       token,
-      process.env.TSC_JWT_TOKEN as string
+      process.env.JWT_SECRET_KEY as string
     ) as IPayloadJWT;
 
     req.name = name;

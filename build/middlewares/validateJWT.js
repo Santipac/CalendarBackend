@@ -14,7 +14,7 @@ const validateJWT = (req, res, next) => {
         });
     }
     try {
-        const { name, uid } = jsonwebtoken_1.default.verify(token, process.env.TSC_JWT_TOKEN);
+        const { name, uid } = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET_KEY);
         req.name = name;
         req.uid = uid;
     }
