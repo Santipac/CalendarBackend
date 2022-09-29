@@ -17,13 +17,10 @@ const server = (0, express_1.default)();
 (0, config_1.default)();
 server.use((0, cors_1.default)());
 // Dir Publico
-server.use(express_1.default.static('../public'));
+server.use(express_1.default.static('./public'));
 //Lectura y parseo del body
 server.use(express_1.default.json());
 //Rutas
-server.use('/', (req, res) => {
-    res.send('Hello from Express server');
-});
 server.use('/api/auth', auth_routes_1.default);
 server.use('/api/events', events_routes_1.default);
 //Escuchar Peticiones
