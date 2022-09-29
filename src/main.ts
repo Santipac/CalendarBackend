@@ -6,7 +6,7 @@ import events from './routes/events.routes';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const PORT = process.env.PORT || 3001;
+const PORT = (process.env.PORT as string) || 3001;
 
 //Crea el servidor
 const server = express();

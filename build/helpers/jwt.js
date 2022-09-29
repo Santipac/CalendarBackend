@@ -8,7 +8,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const generateJWT = (uid, name) => {
     return new Promise((resolve, reject) => {
         const payload = { uid, name };
-        jsonwebtoken_1.default.sign(payload, process.env.TSC_JWT_TOKEN, {
+        jsonwebtoken_1.default.sign(payload, process.env.JWT_SECRET_KEY, {
             expiresIn: '2h',
         }, (err, token) => {
             if (err) {

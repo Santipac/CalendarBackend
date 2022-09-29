@@ -5,7 +5,7 @@ export const generateJWT = (uid: string, name: string): Promise<String> => {
     const payload = { uid, name };
     jwt.sign(
       payload,
-      process.env.TSC_JWT_TOKEN as string,
+      process.env.JWT_SECRET_KEY as string,
       {
         expiresIn: '2h',
       },
