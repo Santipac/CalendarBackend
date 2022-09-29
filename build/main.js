@@ -21,6 +21,9 @@ server.use(express_1.default.static('../public'));
 //Lectura y parseo del body
 server.use(express_1.default.json());
 //Rutas
+server.use('/', (req, res) => {
+    res.send('Hello from Express server');
+});
 server.use('/api/auth', auth_routes_1.default);
 server.use('/api/events', events_routes_1.default);
 //Escuchar Peticiones

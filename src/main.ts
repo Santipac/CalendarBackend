@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import dbConnection from './databases/config';
 import cors from 'cors';
 import auth from './routes/auth.routes';
@@ -22,6 +22,9 @@ server.use(express.static('../public'));
 server.use(express.json());
 
 //Rutas
+server.use('/', (req: Request, res: Response) => {
+  res.send('Hello from Express server');
+});
 server.use('/api/auth', auth);
 server.use('/api/events', events);
 //Escuchar Peticiones
