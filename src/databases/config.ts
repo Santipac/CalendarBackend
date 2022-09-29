@@ -2,10 +2,7 @@ import mongoose from 'mongoose';
 
 const dbConnection = async () => {
   try {
-    await mongoose.connect(
-      process.env.MONGODB_URL ||
-        'mongodb+srv://MERN_USER:HSayPC5Afal3p1jU@calendardb.uwhy6oc.mongodb.net/mern_calendar'
-    );
+    await mongoose.connect(process.env.MONGODB_URL as string);
     console.log('🚀 DataBase is running!');
   } catch (error) {
     console.log(error);
