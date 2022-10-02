@@ -18,7 +18,7 @@ export const createUser: ApiFunction = async (req, res) => {
     if (user) {
       return res.status(400).json({
         ok: false,
-        msg: 'This email is already in use. Please try again',
+        msg: 'El email ya existe. Por favor, ingrese uno nuevo.',
       });
     }
     user = new User(req.body);
@@ -42,7 +42,7 @@ export const createUser: ApiFunction = async (req, res) => {
     console.log(err);
     res.status(500).json({
       ok: false,
-      msg: 'Something went wrong saving!',
+      msg: 'Algo salio mal!',
     });
   }
 };
@@ -54,7 +54,7 @@ export const loginUser: ApiFunction = async (req, res) => {
     if (!user) {
       return res.status(400).json({
         ok: false,
-        msg: 'Email address not found',
+        msg: 'Email no encontrado',
       });
     }
     //Validar contraseña encriptada
@@ -63,7 +63,7 @@ export const loginUser: ApiFunction = async (req, res) => {
     if (!validatePassword) {
       return res.status(400).json({
         ok: false,
-        msg: 'Password incorrect',
+        msg: 'Contraseña Incorrecta',
       });
     }
     const token = await generateJWT(user.id, user.name);
@@ -82,6 +82,8 @@ export const revalidateUser: ApiFunction = async (req, res) => {
   const token = await generateJWT(uid, name);
   res.json({
     ok: true,
+    uid,
+    name,
     token,
   });
 };

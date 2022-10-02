@@ -29,7 +29,7 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         if (user) {
             return res.status(400).json({
                 ok: false,
-                msg: 'This email is already in use. Please try again',
+                msg: 'El email ya existe. Por favor, ingrese uno nuevo.',
             });
         }
         user = new User_1.default(req.body);
@@ -50,7 +50,7 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         console.log(err);
         res.status(500).json({
             ok: false,
-            msg: 'Something went wrong saving!',
+            msg: 'Algo salio mal!',
         });
     }
 });
@@ -62,7 +62,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (!user) {
             return res.status(400).json({
                 ok: false,
-                msg: 'Email address not found',
+                msg: 'Email no encontrado',
             });
         }
         //Validar contraseña encriptada
@@ -70,7 +70,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (!validatePassword) {
             return res.status(400).json({
                 ok: false,
-                msg: 'Password incorrect',
+                msg: 'Contraseña Incorrecta',
             });
         }
         const token = yield (0, jwt_1.generateJWT)(user.id, user.name);
@@ -91,6 +91,8 @@ const revalidateUser = (req, res) => __awaiter(void 0, void 0, void 0, function*
     const token = yield (0, jwt_1.generateJWT)(uid, name);
     res.json({
         ok: true,
+        uid,
+        name,
         token,
     });
 });

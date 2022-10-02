@@ -23,7 +23,7 @@ export const createEvent: ApiFunction = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       ok: false,
-      msg: 'Please contact the administrator',
+      msg: 'Por favor contacte con un administrador.',
     });
   }
 };
@@ -38,7 +38,7 @@ export const updateEvent: ApiFunction = async (req, res) => {
       if (event.user != req.uid) {
         return res.status(401).json({
           ok: false,
-          msg: 'You are not allowed to delete this event',
+          msg: 'No tiene permisos para eliminar este evento.',
         });
       } else {
         const newEvent = {
@@ -57,13 +57,13 @@ export const updateEvent: ApiFunction = async (req, res) => {
     } else {
       return res.status(404).json({
         ok: false,
-        msg: 'Event not found',
+        msg: 'Evento no encontrado.',
       });
     }
   } catch (error) {
     return res.status(500).json({
       ok: false,
-      msg: 'Please contact the administrator',
+      msg: 'Por favor contacte con un administrador.',
     });
   }
 };
@@ -78,26 +78,26 @@ export const deleteEvent: ApiFunction = async (req, res) => {
       if (event.user != req.uid) {
         return res.status(401).json({
           ok: false,
-          msg: 'You are not allowed to delete this event',
+          msg: 'No tiene permisos para eliminar este evento.',
         });
       } else {
         const eventDeleted = await Event.findByIdAndDelete(eventID);
         return res.json({
           ok: true,
-          msg: 'Event deleted successfully!',
+          msg: 'Se eliminó el Evento Correctamente!',
           event: eventDeleted,
         });
       }
     } else {
       return res.status(404).json({
         ok: false,
-        msg: 'Event not found',
+        msg: 'Evento no encontrado',
       });
     }
   } catch (error) {
     res.status(500).json({
       ok: false,
-      msg: 'Please contact the administrator',
+      msg: 'Por favor contacte con un administrador.',
     });
   }
 };
