@@ -2,7 +2,7 @@ import { ApiFunction } from '../types/global';
 import Event from '../models/Event';
 
 export const getEvents: ApiFunction = async (req, res) => {
-  const listEvents = await Event.find().populate('user', 'email');
+  const listEvents = await Event.find().populate('user', 'name');
 
   return res.status(200).json({
     ok: true,
@@ -38,7 +38,7 @@ export const updateEvent: ApiFunction = async (req, res) => {
       if (event.user != req.uid) {
         return res.status(401).json({
           ok: false,
-          msg: 'No tiene permisos para eliminar este evento.',
+          msg: 'No tiene permisos para modificar este evento.',
         });
       } else {
         const newEvent = {

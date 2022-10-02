@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteEvent = exports.updateEvent = exports.createEvent = exports.getEvents = void 0;
 const Event_1 = __importDefault(require("../models/Event"));
 const getEvents = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const listEvents = yield Event_1.default.find().populate('user', 'email');
+    const listEvents = yield Event_1.default.find().populate('user', 'name');
     return res.status(200).json({
         ok: true,
         listEvents,
@@ -48,7 +48,7 @@ const updateEvent = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             if (event.user != req.uid) {
                 return res.status(401).json({
                     ok: false,
-                    msg: 'No tiene permisos para eliminar este evento.',
+                    msg: 'No tiene permisos para modificar este evento.',
                 });
             }
             else {
