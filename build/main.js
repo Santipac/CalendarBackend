@@ -16,16 +16,11 @@ const server = (0, express_1.default)();
 //Database
 (0, config_1.default)();
 server.use((0, cors_1.default)());
-// Dir Publico
-server.use(express_1.default.static('./public'));
 //Lectura y parseo del body
 server.use(express_1.default.json());
 //Rutas
 server.use('/api/auth', auth_routes_1.default);
 server.use('/api/events', events_routes_1.default);
-server.get('*', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-});
 //Escuchar Peticiones
 server.listen(PORT, () => {
     console.log(`Servidor corriendo en puerto ${PORT}`);
