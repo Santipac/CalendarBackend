@@ -24,6 +24,10 @@ server.use(express.json());
 //Rutas
 server.use('/api/auth', auth);
 server.use('/api/events', events);
+
+server.get('*', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
 //Escuchar Peticiones
 server.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
